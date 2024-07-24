@@ -13,7 +13,7 @@ build: ## Builds the Docker images
 up: ## Start containers in detached mode (no logs)
 	docker-compose up --detach
 stop: ## Stop containers
-	docker-compose php
+	docker-compose stop
 remove: ## Remove containers
 	docker-compose stop
 	docker-compose rm -fv php

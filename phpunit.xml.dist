@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./vendor/autoload.php" colors="true" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" cacheDirectory=".phpunit.cache">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         stopOnFailure="false"
+         cacheDirectory=".phpunit.cache">
   <testsuites>
-    <testsuite name="tests">
+    <testsuite name="Project Test Suite">
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
+
   <php>
+    <env name="APP_ENV" value="test"/>
+    <env name="KERNEL_CLASS" value="Party\Kernel"/>
     <ini name="error_reporting" value="E_ALL"/>
+    <ini name="memory_limit" value="-1"/>
   </php>
+
   <source>
     <include>
       <directory suffix=".php">./src</directory>

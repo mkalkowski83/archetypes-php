@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   php:
-    container_name: php_app_template_php
+    container_name: php_party_php
     restart: unless-stopped
     tty: true
     build:
@@ -12,7 +12,21 @@ services:
       - ./:/app
     working_dir: /app
     networks:
-      - app_template_network
+      - _network
+  database:
+    image: postgres:latest
+    container_name: postgres_patry
+    hostname: postgres_patry
+    environment:
+      POSTGRES_USER: exampleuser
+      POSTGRES_PASSWORD: examplepass
+      POSTGRES_DB: exampledb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - _network
 
 networks:
-  app_template_network:
+  _network:
